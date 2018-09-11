@@ -17,9 +17,10 @@ if (isset($_GET["action"]) && $_GET["action"]=="create-session") {
 }
 
 if (isset($_GET["action"]) && $_GET["action"]=="create-tag") {
-        $req = $bdd->prepare('INSERT INTO tag(name,color,leftOffset,righOffset) VALUES(:name, :color, :leftOffset, :righOffset)');
+        $req = $bdd->prepare('INSERT INTO tag(idTag,name,color,leftOffset,righOffset) VALUES(:idTag, :name, :color, :leftOffset, :righOffset)');
         $req->execute(array(
          //add properties
+	'idTag' => $_GET["idTag"],
         'name' => $_GET["name"],
         'color' => $_GET["color"],
         'leftOffset' => $_GET["leftOffset"],
