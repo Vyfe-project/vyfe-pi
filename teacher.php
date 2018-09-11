@@ -2,8 +2,8 @@
 
 //echo SAlut;
 try
-{                                           //dbname=vyfe_pi               'vyfepi' 'vyfepi'
-	       $bdd = new PDO('mysql:host=localhost;dbname=vyfepi;charset=utf8', 'root', 'azerty1234');
+{                                                        //change user
+	       $bdd = new PDO('mysql:host=localhost;dbname=vyfe_pi;charset=utf8', 'vyfepi', 'vyfepi');
 }
 catch (Exception $e)
 {
