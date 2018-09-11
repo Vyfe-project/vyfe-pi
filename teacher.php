@@ -2,34 +2,33 @@
 
 //echo SAlut;
 try
-{    //dbname=vyfe_pi'vyfepi'  'vyfepi'
- = new PDO('mysql:host=localhost;dbname=vyfepi;charset=utf8', 'root', 'azerty1234');
+{                                           //dbname=vyfe_pi               'vyfepi' 'vyfepi'
+	       $bdd = new PDO('mysql:host=localhost;dbname=vyfepi;charset=utf8', 'root', 'azerty1234');
 }
-catch (Exception )
+catch (Exception $e)
 {
-        die('Erreur : ' . ->getMessage());
+        die('Erreur : ' . $e->getMessage());
 }
 
-if (isset([action]) && [action]==create-session) {
- = ->prepare('INSERT INTO session(name) VALUES(:name)');
-->execute(array('name' => [name]));
-header(Status: 200 OK, false, 200);
+if (isset($_GET["action"]) && $_GET["action"]=="create-session") {
+	      $req = $bdd->prepare('INSERT INTO session(name) VALUES(:name)');
+	      $req->execute(array('name' => $_GET["name"]));
+	      header("Status: 200 OK", false, 200);
 }
 
-if (isset([action]) && [action]==create-tag) {
-         = ->prepare('INSERT INTO tag(name,color,leftOffset,righOffset) VALUES(:name, :color, :leftOffset, :righOffset)');
-        ->execute(array(
-//add properties
-'name' => [name],
-'color' => [color],
-'leftOffset' => [leftOffset],
-'righOffset' => [righOffset]));
-        header(Status: 200 OK, false, 200);
+if (isset($_GET["action"]) && $_GET["action"]=="create-tag") {
+        $req = $bdd->prepare('INSERT INTO tag(name,color,leftOffset,righOffset) VALUES(:name, :color, :leftOffset, :righOffset)');
+        $req->execute(array(
+         //add properties
+        'name' => $_GET["name"],
+        'color' => $_GET["color"],
+        'leftOffset' => $_GET["leftOffset"],
+        'righOffset' => $_GET["righOffset"]));
+        header("Status: 200 OK", false, 200);
 }
-
 
 else {
-header(Status:400 BAD REQUEST, false, 400);
-http_response_code(400);
-die();
+	header("Status:400 BAD REQUEST", false, 400);
+	http_response_code(400);
+	die();
 }
