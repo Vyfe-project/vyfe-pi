@@ -11,8 +11,9 @@ catch (Exception $e)
 }
 
 if (isset($_GET["action"]) && $_GET["action"]=="create-session") {
-	      $req = $bdd->prepare('INSERT INTO session(name) VALUES(:name)');
-	      $req->execute(array('name' => $_GET["name"]));
+	      $req = $bdd->prepare('INSERT INTO session(idSession,name) VALUES(:idSession, :name)');
+	      $req->execute(array('name' => $_GET["name"],
+				 'idSession' => $_GET["idSession"],));
 	      header("Status: 200 OK", false, 200);
 }
 
