@@ -12,7 +12,7 @@ include 'head.php';
 //echo "SAlut";
 try
 {
-	$bdd = new PDO('mysql:host=localhost;dbname=vyfepi;charset=utf8', 'root', 'azerty1234');
+	$bdd = new PDO('mysql:host=localhost;dbname=vyfe_pi;charset=utf8', 'vyfepi', 'vyfepi');
 }
 catch (Exception $e)
 {
